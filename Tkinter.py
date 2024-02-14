@@ -18,7 +18,7 @@ def button_click():
     value_to_write = decimal_number
     
     # Modbus TCP server configuration
-    server_ip = '192.168.4.220'  # Replace with your server's IP address
+    server_ip = ipentry.get()  # Replace with your server's IP address
     server_port = 502           # Default Modbus TCP port
 
     # Create a Modbus TCP client
@@ -43,56 +43,71 @@ def button_click():
     client.close()
     
 #Label del esclavo
+iplabel = tk.Label(window, text="IP: ")
+iplabel.grid(row=0, column=0, padx=10, pady=5)
+
+#Entrada del esclavo
+ipentry = tk.Entry(window)
+ipentry.insert(0,'192.168.4.220')
+ipentry.grid(row=0, column=1, padx=10, pady=5) 
+ 
+#Label del esclavo
 do0_label = tk.Label(window, text="DO0: ")
-do0_label.grid(row=0, column=0, padx=10, pady=5)
+do0_label.grid(row=1, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do0_entry = tk.Entry(window)
-do0_entry.grid(row=0, column=1, padx=10, pady=5)      
+do0_entry.insert(0,0)
+do0_entry.grid(row=1, column=1, padx=10, pady=5)      
 #Label del esclavo
 do1_label = tk.Label(window, text="DO1: ")
-do1_label.grid(row=1, column=0, padx=10, pady=5)
+do1_label.grid(row=2, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do1_entry = tk.Entry(window)
-do1_entry.grid(row=1, column=1, padx=10, pady=5)
+do1_entry.insert(0,0)
+do1_entry.grid(row=2, column=1, padx=10, pady=5)
 
 #Label del esclavo
 do2_label = tk.Label(window, text="DO2: ")
-do2_label.grid(row=2, column=0, padx=10, pady=5)
+do2_label.grid(row=3, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do2_entry = tk.Entry(window)
-do2_entry.grid(row=2, column=1, padx=10, pady=5)
+do2_entry.insert(0,0)
+do2_entry.grid(row=3, column=1, padx=10, pady=5)
 
 #Label del esclavo
 do3_label = tk.Label(window, text="DO3: ")
-do3_label.grid(row=3, column=0, padx=10, pady=5)
+do3_label.grid(row=4, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do3_entry = tk.Entry(window)
-do3_entry.grid(row=3, column=1, padx=10, pady=5)
+do3_entry.insert(0,0)
+do3_entry.grid(row=4, column=1, padx=10, pady=5)
 
 #Label del esclavo
 do4_label = tk.Label(window, text="DO4: ")
-do4_label.grid(row=4, column=0, padx=10, pady=5)
+do4_label.grid(row=5, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do4_entry = tk.Entry(window)
-do4_entry.grid(row=4, column=1, padx=10, pady=5)
+do4_entry.insert(0,0)
+do4_entry.grid(row=5, column=1, padx=10, pady=5)
 
 #Label del esclavo
 do5_label = tk.Label(window, text="DO5: ")
-do5_label.grid(row=5, column=0, padx=10, pady=5)
+do5_label.grid(row=6, column=0, padx=10, pady=5)
 
 #Entrada del esclavo
 do5_entry = tk.Entry(window)
-do5_entry.grid(row=5, column=1, padx=10, pady=5)
+do5_entry.insert(0,0)
+do5_entry.grid(row=6, column=1, padx=10, pady=5)
 
 
 # Button to trigger an action
 button = tk.Button(window, text="Introducir", command=button_click)
-button.grid(row=6, column=0, columnspan=2, pady=10)
+button.grid(row=7, column=0, columnspan=2, pady=10)
 
 
 # Start the tkinter event loop
