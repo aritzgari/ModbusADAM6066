@@ -1,5 +1,9 @@
 from pymodbus.client import ModbusTcpClient
 
+# Flag para lanzar las funciones cuando hay que lanzarlas
+estadoluz=0
+
+#Leer estado de las entradas digitales del ADAM
 def leerestadoDI():
     # Modbus TCP server configuration
     lista =[]
@@ -29,11 +33,12 @@ def leerestadoDI():
     client.close()
     
     return lista
-        
+
+#Activar la salida digital 0  
 def activarluz():
     server_ip = '192.168.4.220'  # Replace with your server's IP address
     server_port = 502           # Default Modbus TCP port
-    luzactivada=1
+    luzactivada = 1
     # Create a Modbus TCP client
     client = ModbusTcpClient(server_ip, server_port)
 
@@ -60,6 +65,7 @@ def activarluz():
     client.close()
     return luzactivada
 
+#Desactivar la salida digital 0  
 def desactivarluz():
     server_ip = '192.168.4.220'  # Replace with your server's IP address
     server_port = 502           # Default Modbus TCP port
@@ -90,16 +96,18 @@ def desactivarluz():
     # Close the Modbus connection
     client.close()
 
-estadoluz=0
+
 while True:
-    listaa=leerestadoDI()    
-    for i in range(len(listaa)):
-        if listaa[0]==1 and estadoluz==0:
-            estadoluz=activarluz()
-            print("Activar")
-        elif listaa[0]==0 and estadoluz==1:
-            print("Desactivar")
-            desactivarluz()
-            estadoluz=0
+    
+    listaa=leerestadoDI()
+    
+    if listaa[0]==1 and estadoluz==0:
+        print("Activar")
+        estadoluz=activarluz()
+        
+    elif listaa[0]==0 and estadoluz==1:
+        print("Desactivar")
+        desactivarluz()
+        estadoluz=0
 
 
